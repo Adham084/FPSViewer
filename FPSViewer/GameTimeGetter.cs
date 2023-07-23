@@ -5,7 +5,7 @@ namespace FPSViewer
 {
     public class GameTimeGetter : GameComponent
     {
-        public GameTime GameTime { get; private set; }
+        public GameTime GameTime { get; private set; } = new GameTime();
 
         public GameTimeGetter(Game game) : base(game) { }
 

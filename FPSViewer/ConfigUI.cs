@@ -1,4 +1,5 @@
-﻿using GenericModConfigMenu;
+﻿using System;
+using GenericModConfigMenu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
@@ -42,15 +43,15 @@ namespace FPSViewer
 			switch (fieldId)
 			{
                 case "R":
-                    _currentColor.R = (byte)value;
+                    _currentColor.R = Convert.ToByte(value);
                     break;
 
                 case "G":
-                    _currentColor.G = (byte)value;
+                    _currentColor.G = Convert.ToByte(value);
                     break;
 
                 case "B":
-                    _currentColor.B = (byte)value;
+                    _currentColor.B = Convert.ToByte(value);
                     break;
             }
 		}
@@ -120,7 +121,7 @@ namespace FPSViewer
             configMenu.AddNumberOption(
                 _modManifest,
                 () => _config.TextColor.R,
-                (value) => _config.TextColor.R = (byte)value,
+                (value) => _config.TextColor.R = Convert.ToByte(value),
                 () => "Red",
                 () => "Red component of the color.",
                 0,
@@ -133,7 +134,7 @@ namespace FPSViewer
             configMenu.AddNumberOption(
                 _modManifest,
                 () => _config.TextColor.G,
-                (value) => _config.TextColor.G = (byte)value,
+                (value) => _config.TextColor.G = Convert.ToByte(value),
                 () => "Green",
                 () => "Green component of the color.",
                 0,
@@ -146,7 +147,7 @@ namespace FPSViewer
             configMenu.AddNumberOption(
                 _modManifest,
                 () => _config.TextColor.B,
-                (value) => _config.TextColor.B = (byte)value,
+                (value) => _config.TextColor.B = Convert.ToByte(value),
                 () => "Blue",
                 () => "Blue component of the color.",
                 0,
@@ -160,7 +161,6 @@ namespace FPSViewer
         private void DrawColorPreview(SpriteBatch spriteBatch, Vector2 pos)
         {
 			IClickableMenu.drawTextureBox(spriteBatch, (int)pos.X, (int)pos.Y, 150, 50, Color.White);
-			// _config.TextColor.A = 255;
 			spriteBatch.Draw(Game1.staminaRect, new Rectangle((int)pos.X + 12, (int)pos.Y + 12, 126, 26), _currentColor);
 		}
     }

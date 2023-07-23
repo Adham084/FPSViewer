@@ -7,7 +7,7 @@ using StardewValley;
 
 namespace FPSViewer
 {
-    public class ModEntry : Mod
+    public class FPSViewerMod : Mod
     {
         private ModConfig _config;
         private ConfigUI _configUI;
@@ -24,20 +24,20 @@ namespace FPSViewer
             _config = helper.ReadConfig<ModConfig>();
 
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
-            helper.Events.GameLoop.UpdateTicking += OnUpdateTicking;
-            helper.Events.Display.RenderingHud += OnRenderingHud;
-
-            gameTimeGetter = new GameTimeGetter(GameRunner.instance);
-            GameRunner.instance.Components.Add(gameTimeGetter);
+            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.Display.RenderedHud += OnRenderedHud;
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             _configUI = new ConfigUI();
             _configUI.Init(_config, ModManifest, Helper);
+            
+            gameTimeGetter = new GameTimeGetter(GameRunner.instance);
+            GameRunner.instance.Components.Add(gameTimeGetter);
         }
 
-        private void OnUpdateTicking(object sender, UpdateTickingEventArgs e)
+        private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
             if (_config.Enable)
             {
@@ -52,7 +52,7 @@ namespace FPSViewer
             }
         }
 
-        private void OnRenderingHud(object sender, RenderingHudEventArgs e)
+        private void OnRenderedHud(object sender, RenderedHudEventArgs e)
         {
             if (_config.Enable)
             {
