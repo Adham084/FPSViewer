@@ -1,7 +1,7 @@
 ﻿{
   "Name": "Frame Rate Viewer",
   "Author": "Adham084",
-  "Version": "1.0.1",
+  "Version": "1.0.2",
   "Description": "View Frame Rate (FPS).",
   "UniqueID": "adham084.fpsviewer",
   "EntryDll": "FPSViewer.dll",
