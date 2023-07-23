@@ -96,7 +96,7 @@ namespace FPSViewer
                 () => _config.TextSize * 5,
                 (value) => _config.TextSize = value / 5,
                 () => "Text Size",
-                () => "Text Sise.",
+                () => "Text Size.",
                 1,
                 10,
                 1
