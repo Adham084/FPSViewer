@@ -9,5 +9,6 @@ namespace FPSViewer
         public Color TextColor  = Color.White;
         public float TextSize { get; set; } = 1.0f;
 		public bool DrawShadow { get; set; } = true;
-	}
+        public bool DrawBackground { get; set; } = true;
+    }
 }

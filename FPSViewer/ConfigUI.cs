@@ -60,7 +60,8 @@ namespace FPSViewer
         {
             configMenu.AddSectionTitle(_modManifest, () => "General");
 
-            configMenu.AddBoolOption(_modManifest,
+            configMenu.AddBoolOption(
+                _modManifest,
                () => _config.Enable,
                (value) => _config.Enable = value,
                () => "Enable",
@@ -76,7 +77,7 @@ namespace FPSViewer
                 () => "X Position",
                 () => "How far the text from left edge.",
                 0,
-                90,
+                Game1.uiViewport.X,
                 1
             );
 
@@ -87,7 +88,7 @@ namespace FPSViewer
                 () => "Y Position",
                 () => "How far the text from top edge.",
                 0,
-                90,
+                Game1.uiViewport.Y,
                 1
             );
 
@@ -103,8 +104,17 @@ namespace FPSViewer
             );
 
             configMenu.AddSectionTitle(_modManifest, () => "Appearance");
-
-            configMenu.AddBoolOption(_modManifest,
+            
+            configMenu.AddBoolOption(
+                _modManifest,
+                () => _config.DrawBackground,
+                (value) => _config.DrawBackground = value,
+                () => "Draw Background",
+                () => "Draw background for the text."
+            );
+            
+            configMenu.AddBoolOption(
+                _modManifest,
                 () => _config.DrawShadow,
                 (value) => _config.DrawShadow = value,
                 () => "Draw Shadow",
